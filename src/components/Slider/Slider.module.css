@@ -1,0 +1,46 @@
+.slider .slide {
+  aspect-ratio: 16/9;
+  background-color: lightgrey;
+}
+
+.slider:global(.swiper) {
+  padding: 1rem 2rem;
+}
+
+.slide {
+  cursor: pointer;
+  transition: .1s;
+}
+
+.slide:hover {
+  transform: scale(1.1);
+  z-index: 99;
+}
+
+.slideContent {
+  display: block;
+  height: 100%;
+}
+
+:global(.swiper-button-next) {
+  background-image: url("../../assets/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 200%;
+  transform: rotate(180deg);
+}
+
+:global(.swiper-button-prev) {
+  background-image: url("../../assets/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 200%;
+}
+
+:global(.swiper-button-prev):global(.swiper-button-disabled), :global(.swiper-button-next):global(.swiper-button-disabled) {
+  display: none;
+}
+
+:global(.swiper-button-next):after, :global(.swiper-button-prev):after{
+  display: none;
+}

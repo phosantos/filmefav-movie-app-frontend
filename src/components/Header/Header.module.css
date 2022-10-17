@@ -1,0 +1,31 @@
+.header {
+  border-bottom: 1px solid var(--content-2);
+}
+
+.header .container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+}
+
+.menu {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  gap: 2rem;
+}
+
+.menu li a {
+  color: var(--text-tertiary);
+  font-weight: 500;
+  padding: .5rem 0;
+  transition: .2s;
+}
+
+.menu li:hover a {
+  color: var(--text-primary);
+}
+
+.menu li a:global(.active) {
+  color: var(--text-primary);
+}
