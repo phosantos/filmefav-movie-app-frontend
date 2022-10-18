@@ -4,6 +4,24 @@ import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`,
+      );
+
+      const json = await response.json();
+
+      setData(json);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <section className={styles.home}>
       <div>
@@ -11,7 +29,7 @@ const Home = () => {
           <strong>Em alta</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
-        <Slider />
+        <Slider movies={data ? data.results : null} />
       </div>
       <div>
         <h1 className={styles.title}>

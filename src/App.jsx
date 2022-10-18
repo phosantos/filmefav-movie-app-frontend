@@ -1,15 +1,26 @@
 import './App.css';
 import Header from './components/Header';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useMatch } from 'react-router-dom';
 import Home from './pages/Home';
 import Filmes from './pages/Filmes';
 import Pesquisar from './pages/Pesquisar';
 import Filme from './pages/Filme';
 
 function App() {
+  const match = useMatch('/filme/:id');
+  const appref = React.useRef();
+
+  React.useEffect(() => {
+    if (match) appref.current.classList.add('bg');
+    else {
+      appref.current.classList.remove('bg');
+      appref.current.style.backgroundImage = '';
+    }
+  }, [match]);
+
   return (
-    <div className="app">
+    <div className="app" ref={appref}>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />

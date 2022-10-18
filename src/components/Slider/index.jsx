@@ -5,13 +5,16 @@ import { Navigation } from 'swiper';
 import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { ReactComponent as Star } from '../../assets/StarOutline.svg';
 
-const Slider = () => {
-  const array = [];
-  for (let i = 0; i < 15; i++) {
-    array[i] = i;
-  }
+function getBackdrop(backdropUrl) {
+  const baseUrl = 'https://image.tmdb.org/t/p/';
+  const width = 'w500';
 
+  return baseUrl + width + backdropUrl;
+}
+
+const Slider = ({ movies }) => {
   return (
     <Swiper
       modules={[Navigation]}
@@ -21,10 +24,29 @@ const Slider = () => {
       navigation
       className={styles.slider}
     >
-      {array.map((n) => {
+      {movies?.map((movie) => {
         return (
-          <SwiperSlide className={styles.slide} key={n}>
-            <Link to={`/filme/${n}`} className={styles.slideContent}></Link>
+          <SwiperSlide className={styles.slide} key={movie.id}>
+            <Link
+              to={`/filme/${movie.id}`}
+              className={styles.movie}
+              style={{
+                backgroundImage: `url(${getBackdrop(movie.backdrop_path)})`,
+              }}
+            >
+              <div className={styles.wrapper}>
+                <div>
+                  <h3 className={styles.title}>{movie.title}</h3>
+                  <ul className={styles.details}>
+                    <li>{movie.release_date.split('-')[0]}</li>
+                    <li className={styles.rating}>
+                      <Star />
+                      {movie.vote_average.toFixed(1)}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Link>
           </SwiperSlide>
         );
       })}
