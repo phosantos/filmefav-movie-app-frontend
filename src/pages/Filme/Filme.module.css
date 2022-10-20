@@ -1,63 +1,81 @@
-.header {
+main {
+  padding: 2rem 0;
+}
+
+.movieInfo {
   box-sizing: border-box;
   padding: 2rem;
-  /* background-color: rgba(0,0,0, .6); */
   display: flex;
   gap: 2rem;
   color: var(--text-primary);
-}
-
-.poster {
-  height: 450px;
-  min-width: 300px;
-  background-color: lightgrey;
-}
-
-.titleWrapper {
-  display: flex;
   font-family: 'Poppins', sans-serif;
+}
+
+.movieInfo .info{
+  display: grid;
   gap: 1rem;
-  align-items: center;
+  align-content: start;
+}
+
+.posterWrapper {
+  height: 360px;
+  min-width: 240px;
+  background-color: lightgrey;
+  background-image: none;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1.25rem;
 }
 
 .title {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
-.year {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--text-tertiary);
+.genresWrapper {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-secondary);
 }
 
 .genres {
-  font-family: 'Roboto', sans-serif;
+  display: flex;
+  gap: 4px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  gap: 4px;
+}
+
+.rating svg{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.overview  {
+  max-width: 100%;
+  line-height: 1.3;
   font-size: 1rem;
   color: var(--text-secondary);
 }
 
-.rating {
-  margin-top: 2rem;
-  font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
+.recommendations {
+  padding: 2rem 0;
+}
+
+.recommendations h2{
+  padding: 0 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  font-size: 1.5rem;
   font-weight: 500;
-}
-
-.synopsis {
-  margin-top: 2rem;
-}
-
-.synopsis h3{
-  font-size: 1.2rem;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
-}
-
-.synopsis p {
-  margin-top: 1rem;
-  max-width: 100%;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.3;
-  font-size: 1rem;
 }

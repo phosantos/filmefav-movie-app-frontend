@@ -2,6 +2,7 @@
 
 :root {
   --background: rgba(25, 25, 25, 1);
+  --background: black;
   --text-primary: #FFFFFF;
   --text-secondary: #EEF1F3;
   --text-tertiary: #A9B2B9;
@@ -50,5 +51,5 @@ img {
   position: absolute;
   top: 0;
   z-index: -1;
-  opacity: .7;
+  opacity: .85;
 }
