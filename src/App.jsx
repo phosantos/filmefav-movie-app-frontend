@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Filmes from './pages/Filmes';
 import Pesquisar from './pages/Pesquisar';
 import Filme from './pages/Filme';
+import Footer from './components/Footer';
 
 function App() {
   const match = useMatch('/filme/:id');
@@ -25,10 +26,11 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="filmes/*" element={<Filmes />} />
-        <Route path="pesquisar" element={<Pesquisar />} />
         <Route path="filme/:id" element={<Filme />} />
+        <Route path="pesquisar" element={<Pesquisar />} />
         <Route path="*" element={<div>404...Página não encontrada</div>} />
       </Routes>
+      <Footer />
     </div>
   );
 }

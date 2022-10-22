@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './Filmes.module.css';
+import { Routes, Route } from 'react-router-dom';
 
 const Filmes = () => {
-  return (
-    <section>
-      <h1>Filmes</h1>
-    </section>
-  );
+  return <main>FILMES</main>;
 };
 
 export default Filmes;

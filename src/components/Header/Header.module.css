@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid var(--content-2);
+  border-bottom: 2px solid var(--border);
 }
 
 .header .container {

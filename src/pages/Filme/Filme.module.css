@@ -1,4 +1,4 @@
-main {
+.movie {
   padding: 2rem 0;
 }
 
@@ -72,10 +72,19 @@ main {
   padding: 2rem 0;
 }
 
-.recommendations h2{
+.recommendations > h2{
   padding: 0 2rem;
   font-family: 'Poppins', sans-serif;
   color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+.recommendations > p{
+  padding: 0 2rem;
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 400;
 }

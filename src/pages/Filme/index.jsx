@@ -46,7 +46,7 @@ const Filme = () => {
 
   if (data)
     return (
-      <main>
+      <main className={styles.movie}>
         <section className={styles.movieInfo}>
           <div
             className={styles.posterWrapper}
@@ -81,8 +81,11 @@ const Filme = () => {
 
         <section className={styles.recommendations}>
           <h2>Recomendações</h2>
-          {console.log(recommendations)}
-          <Slider movies={recommendations} />
+          {recommendations.length ? (
+            <Slider movies={recommendations} />
+          ) : (
+            <p>Sem recomendações desta vez :/</p>
+          )}
         </section>
       </main>
     );
