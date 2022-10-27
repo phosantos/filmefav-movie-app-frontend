@@ -1,0 +1,24 @@
+.movies {
+  padding: 2rem;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu li a{
+  display: block;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  padding: .8rem 1rem;
+  border: 2px solid #222222;
+  border-radius: .875rem;
+  transition: .2s;
+  font-size: .875rem;
+}
+
+.menu li a:hover, .menu li a:global(.active){
+  border:  2px solid var(--text-primary);
+}

@@ -2,25 +2,21 @@ import React from 'react';
 import Slider from '../../components/Slider';
 import styles from './Home.module.css';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
+import {
+  TMDB_GET_TRENDING,
+  TMDB_GET_POPULAR,
+  TMDB_GET_NOW_PLAYING,
+  TMDB_GET_UPCOMING,
+} from '../../services/tmdb_api';
 
 const Home = () => {
-  const [data, setData] = React.useState(null);
+  const { data: trending } = useFetch(TMDB_GET_TRENDING());
+  const { data: popular } = useFetch(TMDB_GET_POPULAR());
+  const { data: nowPlaying } = useFetch(TMDB_GET_NOW_PLAYING());
+  const { data: upcoming } = useFetch(TMDB_GET_UPCOMING());
 
-  React.useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${
-          import.meta.env.VITE_API_KEY
-        }`,
-      );
-
-      const json = await response.json();
-
-      setData(json);
-    }
-
-    fetchData();
-  }, []);
+  if (!trending) return null;
 
   return (
     <section className={styles.home}>
@@ -29,28 +25,28 @@ const Home = () => {
           <strong>Em alta</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
-        <Slider movies={data ? data.results : null} />
+        <Slider movies={trending ? trending.results : null} />
       </div>
       <div>
         <h1 className={styles.title}>
           <strong>Populares</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
-        <Slider />
+        <Slider movies={popular ? popular.results : null} />
       </div>
       <div>
         <h1 className={styles.title}>
           <strong>Em cartaz</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
-        <Slider />
+        <Slider movies={nowPlaying ? nowPlaying.results : null} />
       </div>
       <div>
         <h1 className={styles.title}>
-          <strong>Próximas estréias</strong>
+          <strong>Próximas estreias</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
-        <Slider />
+        <Slider movies={upcoming ? upcoming.results : null} />
       </div>
     </section>
   );

@@ -1,38 +1,47 @@
 import React from 'react';
-import styles from './Filme.module.css';
+import styles from './Movie.module.css';
 import { useParams, redirect } from 'react-router-dom';
 import { ReactComponent as Star } from '../../assets/StarOutline.svg';
 import Slider from '../../components/Slider';
+import useSWR from 'swr';
 
-const Filme = () => {
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+const Movie = () => {
   const { id } = useParams();
-  const [data, setData] = React.useState();
-  const [recommendations, setRecommendations] = React.useState();
+  // const [data, setData] = React.useState();
+  const { data } = useSWR(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${
+      import.meta.env.VITE_API_KEY
+    }&language=pt-BR`,
+    fetcher,
+  );
+  const [recommendations, setRecommendations] = React.useState([]);
 
-  React.useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=pt-BR`,
-      );
+  // React.useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(
+  //       `https://api.themoviedb.org/3/movie/${id}?api_key=${
+  //         import.meta.env.VITE_API_KEY
+  //       }&language=pt-BR`,
+  //     );
 
-      const json = await response.json();
+  //     const json = await response.json();
 
-      const responseR = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=pt-BR`,
-      );
+  //     const responseR = await fetch(
+  //       `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${
+  //         import.meta.env.VITE_API_KEY
+  //       }&language=pt-BR`,
+  //     );
 
-      const recomendations = await responseR.json();
+  //     const recomendations = await responseR.json();
 
-      setRecommendations(recomendations.results);
-      setData(json);
-    }
+  //     setRecommendations(recomendations.results);
+  //     setData(json);
+  //   }
 
-    fetchData();
-  }, [id]);
+  //   fetchData();
+  // }, [id]);
 
   React.useEffect(() => {
     const bg = document.querySelector('.bg');
@@ -93,4 +102,4 @@ const Filme = () => {
   return null;
 };
 
-export default Filme;
+export default Movie;

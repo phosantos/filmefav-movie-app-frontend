@@ -3,9 +3,9 @@ import Header from './components/Header';
 import React from 'react';
 import { Routes, Route, useMatch } from 'react-router-dom';
 import Home from './pages/Home';
-import Filmes from './pages/Filmes';
-import Pesquisar from './pages/Pesquisar';
-import Filme from './pages/Filme';
+import Movies from './pages/Movies';
+import Search from './pages/Search';
+import Movie from './pages/Movie';
 import Footer from './components/Footer';
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="filmes/*" element={<Filmes />} />
-        <Route path="filme/:id" element={<Filme />} />
-        <Route path="pesquisar" element={<Pesquisar />} />
+        <Route path="filmes/*" element={<Movies />} />
+        <Route path="filme/:id" element={<Movie />} />
+        <Route path="pesquisar" element={<Search />} />
         <Route path="*" element={<div>404...Página não encontrada</div>} />
       </Routes>
       <Footer />

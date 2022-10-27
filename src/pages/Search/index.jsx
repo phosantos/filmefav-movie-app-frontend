@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './Pesquisar.module.css';
-import { ReactComponent as Search } from '../../assets/search.svg';
+import styles from './Search.module.css';
+import { ReactComponent as SearchIcon } from '../../assets/search.svg';
 import MovieItem from '../../components/MovieItem';
 import { useSearchParams } from 'react-router-dom';
 
-const Pesquisar = () => {
-  const [search, setSearch] = React.useState('');
+const Search = () => {
+  const [searchValue, setSearchValue] = React.useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -38,7 +38,7 @@ const Pesquisar = () => {
 
   async function handleSearchParams(e) {
     e.preventDefault();
-    const query = { s: search };
+    const query = { s: searchValue };
     setSearchParams(query);
 
     // const url = new URL(window.location);
@@ -52,11 +52,11 @@ const Pesquisar = () => {
         <input
           type="text"
           placeholder="Nome do filme..."
-          value={search}
-          onChange={({ target }) => setSearch(target.value)}
+          value={searchValue}
+          onChange={({ target }) => setSearchValue(target.value)}
         />
         <button>
-          <Search />
+          <SearchIcon />
         </button>
       </form>
 
@@ -76,4 +76,4 @@ const Pesquisar = () => {
   );
 };
 
-export default Pesquisar;
+export default Search;

@@ -3,11 +3,15 @@ import styles from './MovieItem.module.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Star } from '../../assets/StarOutline.svg';
 
-function getBackdrop(backdropUrl) {
-  const baseUrl = 'https://image.tmdb.org/t/p/';
+function getBackgroundImg(backdropPath, posterPath) {
+  const BASEURL = 'https://image.tmdb.org/t/p/';
   const width = 'w500';
 
-  return baseUrl + width + backdropUrl;
+  if (backdropPath === null) {
+    return { backgroundImage: `url(${BASEURL + width + posterPath})` };
+  }
+
+  return BASEURL + width + backdropPath;
 }
 
 const MovieItem = ({ movie }) => {
@@ -16,7 +20,13 @@ const MovieItem = ({ movie }) => {
       to={`/filme/${movie.id}`}
       className={styles.movie}
       style={{
-        backgroundImage: `url(${getBackdrop(movie.backdrop_path)})`,
+        backgroundImage:
+          movie.backdropPath === null && movie.posterPath === null
+            ? 'none'
+            : `url(${getBackgroundImg(
+                movie.backdrop_path,
+                movie.poster_path,
+              )})`,
       }}
     >
       <div className={styles.wrapper}>
