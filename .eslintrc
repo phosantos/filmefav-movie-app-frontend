@@ -17,12 +17,5 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks"],
-  "rules": {
-    "react/function-component-definition": {
-      "namedComponents": "arrow-function",
-      "unnamedComponents": "arrow-function"
-    },
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
-  }
+  "rules": {}
 }

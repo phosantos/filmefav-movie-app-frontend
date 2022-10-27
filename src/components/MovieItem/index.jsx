@@ -1,27 +1,28 @@
 import React from 'react';
-import styles from './MovieItem.module.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styles from './MovieItem.module.css';
 import { ReactComponent as Star } from '../../assets/StarOutline.svg';
 
-function getBackgroundImg(backdropPath, posterPath) {
-  const BASEURL = 'https://image.tmdb.org/t/p/';
-  const width = 'w500';
+function MovieItem({ movie }) {
+  const getBackgroundImg = React.useCallback((backdropPath, posterPath) => {
+    const BASEURL = 'https://image.tmdb.org/t/p/';
+    const width = 'w500';
 
-  if (backdropPath === null) {
-    return { backgroundImage: `url(${BASEURL + width + posterPath})` };
-  }
+    if (backdropPath === null) {
+      return BASEURL + width + posterPath;
+    }
 
-  return BASEURL + width + backdropPath;
-}
+    return BASEURL + width + backdropPath;
+  }, []);
 
-const MovieItem = ({ movie }) => {
   return (
     <Link
       to={`/filme/${movie.id}`}
       className={styles.movie}
       style={{
         backgroundImage:
-          movie.backdropPath === null && movie.posterPath === null
+          movie.backdrop_path === null && movie.poster_path === null
             ? 'none'
             : `url(${getBackgroundImg(
                 movie.backdrop_path,
@@ -43,6 +44,17 @@ const MovieItem = ({ movie }) => {
       </div>
     </Link>
   );
+}
+
+MovieItem.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    backdrop_path: PropTypes.string,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
 };
 
 export default MovieItem;

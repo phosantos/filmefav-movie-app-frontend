@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './components/Header';
 import React from 'react';
 import { Routes, Route, useMatch } from 'react-router-dom';
+import Header from './components/Header';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import Search from './pages/Search';

@@ -1,10 +1,10 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styles from './Search.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/search.svg';
 import MovieItem from '../../components/MovieItem';
-import { useSearchParams } from 'react-router-dom';
 
-const Search = () => {
+function Search() {
   const [searchValue, setSearchValue] = React.useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,9 +64,9 @@ const Search = () => {
       {data && (
         <section className={styles.results}>
           {data.results.length > 0 ? (
-            data.results.map((movie) => {
-              return <MovieItem movie={movie} key={movie.id} />;
-            })
+            data.results.map((movie) => (
+              <MovieItem movie={movie} key={movie.id} />
+            ))
           ) : (
             <p>Sem resultados</p>
           )}
@@ -74,6 +74,6 @@ const Search = () => {
       )}
     </main>
   );
-};
+}
 
 export default Search;

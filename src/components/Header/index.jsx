@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Header.module.css';
 import { Link, NavLink } from 'react-router-dom';
+import styles from './Header.module.css';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-const Header = () => {
+function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -28,6 +28,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+}
 
 export default Header;

@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Slider from '../../components/Slider';
 import styles from './Home.module.css';
-import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import {
   TMDB_GET_TRENDING,
@@ -10,7 +10,7 @@ import {
   TMDB_GET_UPCOMING,
 } from '../../services/tmdb_api';
 
-const Home = () => {
+function Home() {
   const { data: trending } = useFetch(TMDB_GET_TRENDING());
   const { data: popular } = useFetch(TMDB_GET_POPULAR());
   const { data: nowPlaying } = useFetch(TMDB_GET_NOW_PLAYING());
@@ -50,6 +50,6 @@ const Home = () => {
       </section>
     </main>
   );
-};
+}
 
 export default Home;

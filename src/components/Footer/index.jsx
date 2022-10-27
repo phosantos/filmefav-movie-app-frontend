@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Footer.module.css';
-import { ReactComponent as Logo } from '../../assets/Logo.svg';
 import { Link } from 'react-router-dom';
+import styles from './Footer.module.css';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -33,6 +33,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
