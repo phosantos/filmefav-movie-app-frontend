@@ -10,7 +10,55 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+
+    <style>
+      .loading {
+        background-color: rgba(0, 0, 0, 1);
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loading .container {
+        overflow: hidden;
+      }
+
+      .loading .container::after {
+        content: '';
+        width: 30px;
+        height: 2px;
+        display: block;
+        background-color: var(--text-primary);
+        margin-top: 4px;
+        animation: loading .6s infinite forwards linear;
+      }
+
+      @keyframes loading {
+        from {
+          transform: translateX(-30px);
+        }
+
+        to {
+          transform: translateX(200px);
+        }
+      }
+    </style>
+
+    <div class="loading">
+      <div class="container">
+        <div>
+          <img src="/logo.svg" alt="FILMEFAV - Carregando...">
+        </div>
+      </div>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

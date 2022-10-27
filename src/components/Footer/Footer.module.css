@@ -1,0 +1,33 @@
+.footer {
+  border-top: 2px solid var(--border);
+  padding: 2rem 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-tertiary);
+}
+
+p a {
+  color: var(--text-primary);
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .tmdb {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  transform: scale(.8);
+}

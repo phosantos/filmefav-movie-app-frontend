@@ -1,0 +1,35 @@
+.loading {
+  background-color: rgba(0, 0, 0, .5);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading .container {
+  overflow: hidden;
+}
+
+.loading .container::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  display: block;
+  background-color: var(--text-primary);
+  margin-top: 4px;
+  animation: loading .6s infinite forwards linear;  
+}
+
+@keyframes loading {
+  from {
+    transform: translateX(-30px);
+  }
+  to {
+    transform: translateX(200px);
+  }
+}

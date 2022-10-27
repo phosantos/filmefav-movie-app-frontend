@@ -19,36 +19,36 @@ const Home = () => {
   if (!trending) return null;
 
   return (
-    <section className={styles.home}>
-      <div>
+    <main className={styles.home}>
+      <section>
         <h1 className={styles.title}>
           <strong>Em alta</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={trending ? trending.results : null} />
-      </div>
-      <div>
+      </section>
+      <section>
         <h1 className={styles.title}>
           <strong>Populares</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={popular ? popular.results : null} />
-      </div>
-      <div>
+      </section>
+      <section>
         <h1 className={styles.title}>
           <strong>Em cartaz</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={nowPlaying ? nowPlaying.results : null} />
-      </div>
-      <div>
+      </section>
+      <section>
         <h1 className={styles.title}>
           <strong>Próximas estreias</strong>
           <Link to="/">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={upcoming ? upcoming.results : null} />
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

@@ -22,3 +22,10 @@
 .menu li a:hover, .menu li a:global(.active){
   border:  2px solid var(--text-primary);
 }
+
+.results {
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
