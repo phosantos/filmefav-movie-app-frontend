@@ -34,10 +34,10 @@ function MovieItem({ movie }) {
         <div className={styles.content}>
           <h3 className={styles.title}>{movie.title}</h3>
           <ul className={styles.details}>
-            <li>{movie.release_date.split('-')[0]}</li>
+            <li>{movie.release_date?.split('-')[0]}</li>
             <li className={styles.rating}>
               <Star />
-              {movie.vote_average.toFixed(1)}
+              {movie.vote_average?.toFixed(1)}
             </li>
           </ul>
         </div>

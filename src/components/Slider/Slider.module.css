@@ -1,13 +1,5 @@
-.slider .slide {
-  aspect-ratio: 16/9;
-}
-
 .slider:global(.swiper) {
   padding: 1rem 2rem;
-}
-
-.slide:hover {
-  z-index: 99;
 }
 
 :global(.swiper-button-next) {
@@ -31,71 +23,4 @@
 
 :global(.swiper-button-next):after, :global(.swiper-button-prev):after{
   display: none;
-}
-
-.movie {
-  display: grid;
-  height: 100%;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .1s;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 1.25rem;
-  overflow: hidden;
-}
-
-.movie .wrapper {
-  background-color: rgba(0, 0, 0, .5);
-  display: grid;
-  border-radius: 1.25rem;
-}
-
-.movie:hover {
-  transform: scale(1.2);
-  z-index: 99;
-}
-
-.movie:hover .wrapper {
-  box-shadow: 0px 0px 0px 2px white inset;
-}
-
-.movie .wrapper > div {
-  align-self: end;
-  padding: 1rem;
-}
-
-.movie .title {
-  font-family: 'Poppins', sans-serif;
-  font-size: .875rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.movie .details {
-  font-family: "Poppins", sans-serif;
-  font-size: .75rem;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  margin-top: .25rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.movie .details .rating{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  color: var(--text-secondary);
-}
-
-.movie .details .rating svg{
-  width: .875rem;
-  height: .875rem;
-}
-
-.movie .details .rating svg path{
-  stroke: var(--text-secondary);
 }

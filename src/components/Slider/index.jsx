@@ -1,57 +1,49 @@
 import React from 'react';
-import styles from './Slider.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styles from './Slider.module.css';
+import MovieItem from '../MovieItem';
+import remToPx from '../../utils/remToPx';
+// eslint-disable-next-line import/no-unresolved
 import 'swiper/css';
+// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/navigation';
-import { ReactComponent as Star } from '../../assets/StarOutline.svg';
 
-function getBackdrop(backdropUrl) {
-  const baseUrl = 'https://image.tmdb.org/t/p/';
-  const width = 'w500';
-
-  return baseUrl + width + backdropUrl;
-}
-
-const Slider = ({ movies }) => {
+function Slider({ movies }) {
   return (
     <Swiper
       modules={[Navigation]}
-      spaceBetween={10}
+      spaceBetween={remToPx(1)}
       slidesPerView={5}
       slidesPerGroup={5}
       navigation
       className={styles.slider}
     >
-      {movies?.map((movie) => {
-        return (
-          <SwiperSlide className={styles.slide} key={movie.id}>
-            <Link
-              to={`/filme/${movie.id}`}
-              className={styles.movie}
-              style={{
-                backgroundImage: `url(${getBackdrop(movie.backdrop_path)})`,
-              }}
-            >
-              <div className={styles.wrapper}>
-                <div>
-                  <h3 className={styles.title}>{movie.title}</h3>
-                  <ul className={styles.details}>
-                    <li>{movie.release_date.split('-')[0]}</li>
-                    <li className={styles.rating}>
-                      <Star />
-                      {movie.vote_average.toFixed(1)}
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-        );
-      })}
+      {movies?.map((movie) => (
+        <SwiperSlide className={styles.slide} key={movie.id}>
+          <MovieItem movie={movie} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
+}
+
+Slider.defaultProps = {
+  movies: null,
+};
+
+Slider.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      backdrop_path: PropTypes.string,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      vote_average: PropTypes.number,
+    }),
+  ),
 };
 
 export default Slider;

@@ -23,28 +23,27 @@ function Home() {
       <section>
         <h1 className={styles.title}>
           <strong>Em alta</strong>
-          <Link to="/">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={trending ? trending.results : null} />
       </section>
       <section>
         <h1 className={styles.title}>
           <strong>Populares</strong>
-          <Link to="/">Ver mais {'>'}</Link>
+          <Link to="/filmes">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={popular ? popular.results : null} />
       </section>
       <section>
         <h1 className={styles.title}>
           <strong>Em cartaz</strong>
-          <Link to="/">Ver mais {'>'}</Link>
+          <Link to="/filmes/cartaz">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={nowPlaying ? nowPlaying.results : null} />
       </section>
       <section>
         <h1 className={styles.title}>
           <strong>Próximas estreias</strong>
-          <Link to="/">Ver mais {'>'}</Link>
+          <Link to="/filmes/proximas-estreias">Ver mais {'>'}</Link>
         </h1>
         <Slider movies={upcoming ? upcoming.results : null} />
       </section>

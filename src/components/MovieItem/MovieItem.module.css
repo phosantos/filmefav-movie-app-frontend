@@ -1,4 +1,5 @@
 .movie {
+  display: block;
   box-sizing: border-box;
   overflow: hidden;
   transition: .1s;
