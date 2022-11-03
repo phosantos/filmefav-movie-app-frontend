@@ -47,11 +47,11 @@ function Search() {
   }
 
   return (
-    <main>
+    <main className={styles.page}>
       <form className={styles.search} onSubmit={handleSearchParams}>
         <input
           type="text"
-          placeholder="Nome do filme..."
+          placeholder="Título do filme..."
           value={searchValue}
           onChange={({ target }) => setSearchValue(target.value)}
         />
@@ -60,18 +60,11 @@ function Search() {
         </button>
       </form>
 
-      {loading && <div className={styles.loading}></div>}
-      {data && (
-        <section className={styles.results}>
-          {data.results.length > 0 ? (
-            data.results.map((movie) => (
-              <MovieItem movie={movie} key={movie.id} />
-            ))
-          ) : (
-            <p>Sem resultados</p>
-          )}
-        </section>
-      )}
+      <section className={styles.results}>
+        {data?.results.map((movie) => (
+          <MovieItem movie={movie} key={movie.id} />
+        ))}
+      </section>
     </main>
   );
 }

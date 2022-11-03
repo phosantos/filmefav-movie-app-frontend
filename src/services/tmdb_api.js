@@ -12,3 +12,9 @@ export const TMDB_GET_NOW_PLAYING = (page = 1) =>
 
 export const TMDB_GET_UPCOMING = (page = 1) =>
   `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=pt-BR&page=${page}&region=BR`;
+
+export const TMDB_GET_MOVIE = (id) =>
+  `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=pt-BR`;
+
+export const TMDB_GET_RECOMMENDATIONS = (id, page = 1) =>
+  `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}&language=pt-BR&page=${page}`;

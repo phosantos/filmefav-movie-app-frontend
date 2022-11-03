@@ -1,10 +1,11 @@
 .movie {
-  padding: 2rem 0;
+  padding: 3rem 0;
+  flex: 1;
 }
 
 .movieInfo {
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 0 2rem;
   display: flex;
   gap: 2rem;
   color: var(--text-primary);
@@ -31,6 +32,7 @@
 .title {
   font-size: 3rem;
   font-weight: 600;
+  line-height: 1;
 }
 
 .genresWrapper {
@@ -69,7 +71,7 @@
 }
 
 .recommendations {
-  padding: 2rem 0;
+  margin-top: 2rem;
 }
 
 .recommendations > h2{
