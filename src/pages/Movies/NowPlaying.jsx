@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import styles from './Movies.module.css';
 import Loading from '../../components/Loading';
 
-const NowPlaying = () => {
+function NowPlaying() {
   const { data, error, loading } = useFetch(TMDB_GET_NOW_PLAYING());
 
   if (error) return <div>Ocorreu um erro :/</div>;
@@ -17,6 +17,6 @@ const NowPlaying = () => {
       ))}
     </section>
   );
-};
+}
 
 export default NowPlaying;

@@ -3,48 +3,33 @@ import { useSearchParams } from 'react-router-dom';
 import styles from './Search.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/search.svg';
 import MovieItem from '../../components/MovieItem';
+import { TMDB_GET_SEARCH } from '../../services/tmdb_api';
 
 function Search() {
   const [searchValue, setSearchValue] = React.useState('');
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [data, setData] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
     const query = searchParams.get('s');
-    async function fetcher() {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=${
-        import.meta.env.VITE_API_KEY
-      }&language=pt-BR&query=${query}&page=1&include_adult=false`;
-      try {
-        setLoading(true);
-        const res = await fetch(url);
-        const json = await res.json();
-        setData(json);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        setError(error);
-        setData(null);
-      }
+
+    async function fetchResults() {
+      const resp = await fetch(TMDB_GET_SEARCH(query));
+      const json = await resp.json();
+      setData(json);
     }
-    if (query !== null) {
-      fetcher();
-    }
+
+    if (query !== null) fetchResults();
   }, [searchParams]);
 
-  async function handleSearchParams(e) {
-    e.preventDefault();
-    const query = { s: searchValue };
-    setSearchParams(query);
-
-    // const url = new URL(window.location);
-    // url.searchParams.set('search', search);
-    // window.history.pushState({}, '', url);
-  }
+  const handleSearchParams = React.useCallback(
+    async (e) => {
+      e.preventDefault();
+      const query = { s: searchValue.trim() };
+      setSearchParams(query);
+    },
+    [searchValue, setSearchParams],
+  );
 
   return (
     <main className={styles.page}>
@@ -55,13 +40,13 @@ function Search() {
           value={searchValue}
           onChange={({ target }) => setSearchValue(target.value)}
         />
-        <button>
+        <button type="submit">
           <SearchIcon />
         </button>
       </form>
 
       <section className={styles.results}>
-        {data?.results.map((movie) => (
+        {data?.results?.map((movie) => (
           <MovieItem movie={movie} key={movie.id} />
         ))}
       </section>

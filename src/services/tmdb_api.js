@@ -18,3 +18,6 @@ export const TMDB_GET_MOVIE = (id) =>
 
 export const TMDB_GET_RECOMMENDATIONS = (id, page = 1) =>
   `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}&language=pt-BR&page=${page}`;
+
+export const TMDB_GET_SEARCH = (query, page = 1) =>
+  `${BASE_URL}/search/movie?api_key=${API_KEY}&language=pt-BR&query=${query}&page=${page}&include_adult=false`;

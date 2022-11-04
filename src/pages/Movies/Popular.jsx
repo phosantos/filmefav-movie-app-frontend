@@ -4,7 +4,7 @@ import { TMDB_GET_POPULAR } from '../../services/tmdb_api';
 import useFetch from '../../hooks/useFetch';
 import styles from './Movies.module.css';
 
-const Popular = () => {
+function Popular() {
   const { data, error, loading } = useFetch(TMDB_GET_POPULAR());
 
   if (error) return <div>Ocorreu um erro :/</div>;
@@ -17,6 +17,6 @@ const Popular = () => {
       ))}
     </section>
   );
-};
+}
 
 export default Popular;

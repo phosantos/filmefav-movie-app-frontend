@@ -4,7 +4,7 @@ import { TMDB_GET_UPCOMING } from '../../services/tmdb_api';
 import useFetch from '../../hooks/useFetch';
 import styles from './Movies.module.css';
 
-const Upcoming = () => {
+function Upcoming() {
   const { data, error, loading } = useFetch(TMDB_GET_UPCOMING());
 
   if (error) return <div>Ocorreu um erro :/</div>;
@@ -17,6 +17,6 @@ const Upcoming = () => {
       ))}
     </section>
   );
-};
+}
 
 export default Upcoming;
